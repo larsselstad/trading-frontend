@@ -1,0 +1,628 @@
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.input-group input,
+.input-group select {
+  padding: 0.5rem;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background: #1a1a1a;
+  color: white;
+  font-size: 1rem;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: #646cff;
+}
+
+.input-group select {
+  cursor: pointer;
+}
+
+.input-group select:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+button {
+  padding: 0.5rem 1.5rem;
+  background: #646cff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+button:hover:not(:disabled) {
+  background: #535bf2;
+}
+
+button:disabled {
+  background: #444;
+  cursor: not-allowed;
+}
+
+.error {
+  padding: 1rem;
+  background: #f44336;
+  color: white;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.chart-panel {
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background: #1a1a2e;
+}
+
+.chart-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.chart-panel-controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.remove-button {
+  background: transparent;
+  color: #888;
+  border: 1px solid #444;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.85rem;
+  min-width: auto;
+  flex-shrink: 0;
+}
+
+.remove-button:hover:not(:disabled) {
+  background: #f44336;
+  color: white;
+  border-color: #f44336;
+}
+
+.chart-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.add-chart-button {
+  flex: 1;
+  padding: 0.75rem;
+  background: transparent;
+  border: 2px dashed #444;
+  color: #888;
+  font-size: 1rem;
+}
+
+.add-chart-button:hover:not(:disabled) {
+  border-color: #646cff;
+  color: #646cff;
+  background: transparent;
+}
+
+.chart-container {
+  margin-top: 1rem;
+}
+
+.chart-type-toggle {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.toggle-btn {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  background: #2d2d44;
+  color: #d1d5db;
+  border: 1px solid #4a4a6a;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.toggle-btn:hover:not(:disabled) {
+  background: #3d3d5c;
+}
+
+.toggle-btn.active {
+  background: #4a4a6a;
+  color: #fff;
+  border-color: #6366f1;
+}
+
+.toggle-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.chart-legend {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #d1d5db;
+}
+
+.chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.chart-legend-swatch {
+  display: inline-block;
+  width: 18px;
+  height: 0;
+  border-top-width: 2px;
+}
+
+.data-count {
+  text-align: center;
+  color: #888;
+  margin-top: 0.5rem;
+}
+
+/* Tab Navigation */
+.tab-nav {
+  display: flex;
+  gap: 0;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #333;
+}
+
+.tab-button {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  color: #888;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 0;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+
+.tab-button:hover:not(:disabled) {
+  color: #fff;
+  background: transparent;
+}
+
+.tab-active {
+  color: #646cff;
+  border-bottom-color: #646cff;
+}
+
+/* Experiment List */
+.experiment-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.experiment-empty {
+  text-align: center;
+  color: #888;
+  padding: 2rem;
+}
+
+.experiment-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.experiment-card {
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+  background: #1a1a2e;
+}
+
+.experiment-card:hover {
+  border-color: #646cff;
+  background: #1a1a3e;
+}
+
+.experiment-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.experiment-card-header h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.experiment-card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+/* Create Experiment */
+.create-experiment {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.create-experiment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.create-step {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.create-step h3 {
+  margin: 0;
+}
+
+.create-step-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.stock-preview {
+  margin-top: 1rem;
+}
+
+/* Experiment View */
+.experiment-view-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.experiment-meta {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.experiment-add-chart {
+  margin-bottom: 1.5rem;
+}
+
+.experiment-add-chart form {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.chart-label {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* Support Line Editor */
+.support-line-editor {
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background: #1a1a2e;
+}
+
+.support-line-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.support-line-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.support-line-empty {
+  color: #888;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.support-line-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.support-line-form input {
+  padding: 0.4rem;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background: #1a1a1a;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.support-line-form .support-line-label {
+  flex: 1;
+}
+
+.support-line-form .support-line-price {
+  width: 100px;
+}
+
+.support-line-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.support-line-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.support-line-row .support-line-label {
+  flex: 1;
+  font-size: 0.9rem;
+  color: white;
+}
+
+.support-line-row .support-line-price {
+  width: 100px;
+  font-size: 0.9rem;
+  color: #aaa;
+  text-align: right;
+}
+
+/* Buy/Sell transaction sections */
+.experiment-transaction-section {
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background: #1a1a2e;
+}
+
+.experiment-transaction-section h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.transaction-form {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.transaction-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.transaction-form input {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background: #1a1a1a;
+  color: white;
+  font-size: 0.9rem;
+  width: 160px;
+}
+
+.buy-info {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 0.75rem;
+}
+
+.buy-info strong {
+  color: white;
+}
+
+/* Completed experiment */
+.experiment-completed-badge {
+  background: #555;
+  color: #ccc;
+  border-radius: 4px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.8rem;
+}
+
+.experiment-completed-note {
+  color: #888;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+/* Experiment summary */
+.experiment-summary {
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background: #1a1a2e;
+}
+
+.experiment-summary h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.summary-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.summary-label {
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.summary-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+}
+
+.summary-pnl.positive {
+  color: #22c55e;
+}
+
+.summary-pnl.negative {
+  color: #ef4444;
+}
+
+/* Positive/negative utility */
+.positive {
+  color: #22c55e;
+}
+
+.negative {
+  color: #ef4444;
+}
+
+/* Experiment table */
+.experiment-table-wrapper {
+  overflow-x: auto;
+}
+
+.experiment-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.experiment-table th {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #444;
+  color: #888;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.experiment-table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #222;
+  vertical-align: middle;
+}
+
+.experiment-table-row {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.experiment-table-row:hover {
+  background: #1a1a3e;
+}
+
+.experiment-name-cell {
+  min-width: 140px;
+}
+
+.experiment-name-link {
+  color: #646cff;
+  font-weight: 500;
+}
+
+.experiment-name-link:hover {
+  text-decoration: underline;
+}
+
+/* Status badge */
+.status-badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.status-active {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+
+.status-completed {
+  background: rgba(128, 128, 128, 0.15);
+  color: #888;
+}
