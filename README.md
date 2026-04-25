@@ -38,6 +38,55 @@ npm install
 | `npm run build` | Bygg for produksjon (kjører TypeScript-sjekk og Vite build) |
 | `npm run lint` | Sjekk koden for lintingfeil med Biome |
 | `npm run lint:fix` | Fiks lintingfeil automatisk |
-| `npm run test:run` | Kjør alle tester én gang |
-| `npm test` | Kjør tester i watch-modus |
+| `npm run test:run` | Kjør alle enhetstester én gang |
+| `npm test` | Kjør enhetstester i watch-modus |
+| `npm run test:e2e` | Kjør Playwright E2E-tester |
+| `npm run test:server` | Start lokal testserver med fixture-data (port 8002) |
+| `npm run dev:test` | Start Vite mot testserveren (for manuell testing) |
+
+---
+
+## Testing
+
+### Enhetstester
+
+Kjøres med [Vitest](https://vitest.dev/):
+
+```bash
+npm run test:run
+```
+
+### E2E-tester (Playwright)
+
+E2E-testene bruker [Playwright](https://playwright.dev/) og trenger ikke en ekte backend. En lokal testserver serverer fixture-data fra `e2e/fixtures/` over HTTP.
+
+Første gang må du installere Chromium:
+
+```bash
+npx playwright install chromium
+```
+
+Kjør alle E2E-tester:
+
+```bash
+npm run test:e2e
+```
+
+Playwright starter testserveren (port 8002) og Vite (port 5173) automatisk.
+
+### Manuell testing mot fixture-data
+
+For å kjøre appen i nettleser mot fixture-data (uten ekte backend), start begge serverne i hvert sitt terminalvindu:
+
+```bash
+# Terminal 1 – fixture-server
+npm run test:server
+
+# Terminal 2 – Vite mot fixture-server
+npm run dev:test
+```
+
+Åpne deretter [http://localhost:5173](http://localhost:5173).
+
+Fixture-filene ligger i `e2e/fixtures/` og dekker endepunktene `/resources`, `/experiments`, eksperimentdetaljer og chartdata.
 

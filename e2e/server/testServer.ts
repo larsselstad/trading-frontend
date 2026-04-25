@@ -11,6 +11,14 @@ const server = createServer((req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Content-Type', 'application/json')
 
+  // Stub write endpoints — just acknowledge without persisting
+  if (req.method === 'PUT' || req.method === 'POST') {
+    res.writeHead(200)
+    res.end(JSON.stringify({ success: true }))
+    console.log(`  ${req.method} ${url.pathname} → stubbed`)
+    return
+  }
+
   try {
     let fixtureName: string
 
