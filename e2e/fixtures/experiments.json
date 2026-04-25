@@ -1,0 +1,33 @@
+{
+  "data": [
+    {
+      "buyDate": "22.12.2025",
+      "buyPrice": 31.6,
+      "chartCount": 1,
+      "completedAt": null,
+      "createdAt": "2026-02-27T16:22:08.448858+00:00",
+      "id": "546c5395-86cf-4508-bf5b-c6e0c8589e7b",
+      "name": "var-test",
+      "profitPercent": null,
+      "sellDate": null,
+      "sellPrice": null,
+      "startDate": "29.10.2025",
+      "stockId": "var"
+    },
+    {
+      "buyDate": null,
+      "buyPrice": null,
+      "chartCount": 4,
+      "completedAt": null,
+      "createdAt": "2026-02-28T19:18:18.302880+00:00",
+      "id": "6c35218f-06a4-4e9c-b77f-a1e2b405ebc4",
+      "name": "TGS Feb",
+      "profitPercent": null,
+      "sellDate": null,
+      "sellPrice": null,
+      "startDate": "03.11.2025",
+      "stockId": "tgs"
+    }
+  ],
+  "success": true
+}

@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": "line-only",
+      "name": "Line Only Stock",
+      "url": "http://example.com/line-only",
+      "charts": []
+    },
+    {
+      "id": "with-ohlc",
+      "name": "OHLC Stock",
+      "url": "http://example.com/with-ohlc",
+      "charts": []
+    },
+    {
+      "id": "with-predictions",
+      "name": "Prediction Stock",
+      "url": "http://example.com/with-predictions",
+      "charts": []
+    }
+  ]
+}

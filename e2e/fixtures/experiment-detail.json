@@ -1,0 +1,32 @@
+{
+  "data": {
+    "buyDate": "22.12.2025",
+    "buyPrice": 31.6,
+    "charts": [
+      {
+        "dataFile": "svr_1d346e19-05d3-4ea0-8dec-bed692968530.csv",
+        "id": "1d346e19-05d3-4ea0-8dec-bed692968530",
+        "svrStartDate": "18.12.2025"
+      }
+    ],
+    "createdAt": "2026-02-27T16:22:08.448858+00:00",
+    "endDate": "",
+    "id": "546c5395-86cf-4508-bf5b-c6e0c8589e7b",
+    "name": "var-test",
+    "startDate": "29.10.2025",
+    "stockId": "var",
+    "supportLines": [
+      {
+        "id": "support-1",
+        "label": "Support 33.33",
+        "price": 33.33
+      },
+      {
+        "id": "27f3f793-dde4-417e-92c8-3828d1e28b3d",
+        "label": "Support 2",
+        "price": 30
+      }
+    ]
+  },
+  "success": true
+}
