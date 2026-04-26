@@ -13,9 +13,17 @@ const server = createServer((req, res) => {
 
   // Stub write endpoints — just acknowledge without persisting
   if (req.method === 'PUT' || req.method === 'POST') {
-    res.writeHead(200)
-    res.end(JSON.stringify({ success: true }))
-    console.log(`  ${req.method} ${url.pathname} → stubbed`)
+    if (req.method === 'POST' && url.pathname === '/experiments') {
+      const fixturePath = join(FIXTURES_DIR, 'create-experiment-response.json')
+      const data = readFileSync(fixturePath, 'utf-8')
+      res.writeHead(200)
+      res.end(data)
+      console.log(`  POST ${url.pathname} → create-experiment-response.json`)
+    } else {
+      res.writeHead(200)
+      res.end(JSON.stringify({ success: true }))
+      console.log(`  ${req.method} ${url.pathname} → stubbed`)
+    }
     return
   }
 

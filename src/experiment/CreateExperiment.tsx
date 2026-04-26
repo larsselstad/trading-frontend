@@ -8,7 +8,6 @@ import { useResources } from '../hooks/useResources'
 
 const CreateExperiment: FC = () => {
   const navigate = useNavigate()
-  const [step, setStep] = useState<1 | 2>(1)
   const [stockId, setStockId] = useState('')
   const [name, setName] = useState('')
   const [startDate, setStartDate] = useState('')
@@ -48,120 +47,99 @@ const CreateExperiment: FC = () => {
         </button>
       </div>
 
-      {step === 1 && (
-        <div className="create-step">
-          <h3>Step 1: Select Stock</h3>
-          <div className="input-group">
-            <label htmlFor="stock-select">
-              Stock:
-              <select
-                id="stock-select"
-                value={stockId}
-                onChange={(e) => setStockId(e.target.value)}
-              >
-                <option value="">Select a stock</option>
-                {resources?.map((r) => (
-                  <option key={r.id} value={r.id}>
-                    {r.name}
-                  </option>
-                ))}
-              </select>
-            </label>
+      <form className="create-step" onSubmit={handleSubmit}>
+        <div className="input-group">
+          <label htmlFor="stock-select">
+            Stock:
+            <select
+              id="stock-select"
+              value={stockId}
+              onChange={(e) => setStockId(e.target.value)}
+            >
+              <option value="">Select a stock</option>
+              {resources?.map((r) => (
+                <option key={r.id} value={r.id}>
+                  {r.name}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+
+        {stockData.length > 0 && (
+          <div className="stock-preview">
+            <p>Preview ({stockData.length} data points)</p>
+            <StockChart data={stockData} />
           </div>
+        )}
 
-          {stockData.length > 0 && (
-            <div className="stock-preview">
-              <p>Preview ({stockData.length} data points)</p>
-              <StockChart data={stockData} />
-            </div>
-          )}
+        <div className="input-group">
+          <label htmlFor="exp-name">
+            Name:
+            <input
+              id="exp-name"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="e.g. Vår Energi Q4 2025"
+              required
+            />
+          </label>
+        </div>
 
-          <button type="button" disabled={!stockId} onClick={() => setStep(2)}>
-            Next
+        <div className="input-group">
+          <label htmlFor="exp-start">
+            Start Date (dd.mm.yyyy):
+            <input
+              id="exp-start"
+              type="text"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              pattern="\d{1,2}\.\d{1,2}\.\d{4}"
+              title="Date in format dd.mm.yyyy"
+              list="exp-start-dates"
+            />
+            <datalist id="exp-start-dates">
+              {stockData.map((p) => (
+                <option key={`s-${p.date}`} value={p.date} />
+              ))}
+            </datalist>
+          </label>
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="exp-end">
+            End Date (dd.mm.yyyy, optional):
+            <input
+              id="exp-end"
+              type="text"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              pattern="\d{1,2}\.\d{1,2}\.\d{4}"
+              title="Date in format dd.mm.yyyy"
+              list="exp-end-dates"
+            />
+            <datalist id="exp-end-dates">
+              {stockData.map((p) => (
+                <option key={`e-${p.date}`} value={p.date} />
+              ))}
+            </datalist>
+          </label>
+        </div>
+
+        <div className="create-step-buttons">
+          <button
+            type="submit"
+            disabled={!name || !stockId || createExperiment.isPending}
+          >
+            {createExperiment.isPending ? 'Creating...' : 'Create Experiment'}
           </button>
         </div>
-      )}
 
-      {step === 2 && (
-        <div className="create-step">
-          <h3>Step 2: Configure Experiment</h3>
-          <form onSubmit={handleSubmit}>
-            <div className="input-group">
-              <label htmlFor="exp-name">
-                Name:
-                <input
-                  id="exp-name"
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Vår Energi Q4 2025"
-                  required
-                />
-              </label>
-            </div>
-
-            <div className="input-group">
-              <label htmlFor="exp-start">
-                Start Date (dd.mm.yyyy):
-                <input
-                  id="exp-start"
-                  type="text"
-                  value={startDate}
-                  onChange={(e) => setStartDate(e.target.value)}
-                  pattern="\d{1,2}\.\d{1,2}\.\d{4}"
-                  title="Date in format dd.mm.yyyy"
-                  list="exp-start-dates"
-                />
-                <datalist id="exp-start-dates">
-                  {stockData.map((p) => (
-                    <option key={`s-${p.date}`} value={p.date} />
-                  ))}
-                </datalist>
-              </label>
-            </div>
-
-            <div className="input-group">
-              <label htmlFor="exp-end">
-                End Date (dd.mm.yyyy, optional):
-                <input
-                  id="exp-end"
-                  type="text"
-                  value={endDate}
-                  onChange={(e) => setEndDate(e.target.value)}
-                  pattern="\d{1,2}\.\d{1,2}\.\d{4}"
-                  title="Date in format dd.mm.yyyy"
-                  list="exp-end-dates"
-                />
-                <datalist id="exp-end-dates">
-                  {stockData.map((p) => (
-                    <option key={`e-${p.date}`} value={p.date} />
-                  ))}
-                </datalist>
-              </label>
-            </div>
-
-            <div className="create-step-buttons">
-              <button type="button" onClick={() => setStep(1)}>
-                Back
-              </button>
-              <button
-                type="submit"
-                disabled={!name || createExperiment.isPending}
-              >
-                {createExperiment.isPending
-                  ? 'Creating...'
-                  : 'Create Experiment'}
-              </button>
-            </div>
-
-            {createExperiment.isError && (
-              <div className="error">
-                Error: {createExperiment.error.message}
-              </div>
-            )}
-          </form>
-        </div>
-      )}
+        {createExperiment.isError && (
+          <div className="error">Error: {createExperiment.error.message}</div>
+        )}
+      </form>
     </div>
   )
 }

@@ -318,10 +318,6 @@ button:disabled {
   gap: 1rem;
 }
 
-.create-step h3 {
-  margin: 0;
-}
-
 .create-step-buttons {
   display: flex;
   gap: 0.5rem;
