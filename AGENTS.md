@@ -1,5 +1,9 @@
 # AI Agent Instructions for Frontend
 
+## Starting the Dev Server
+
+Use `./start-dev.sh` to start the dev server in one command. The script runs `nvm install`, `nvm use`, `npm install`, and `npm run dev` in sequence.
+
 ## After Making Changes
 
 After any changes to TypeScript, JavaScript, CSS, or test files in this frontend folder, you MUST:

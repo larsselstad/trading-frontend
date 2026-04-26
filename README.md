@@ -22,11 +22,22 @@ nvm install
 nvm use
 ```
 
-Installer deretter avhengigheter:
+---
+
+## Start dev-server med ett script
+
+Etter at du har satt opp riktig Node-versjon (se over), kan du starte alt med ett kommando:
 
 ```bash
-npm install
+./start-dev.sh
 ```
+
+Scriptet kjører `nvm install`, `nvm use`, `npm install` og `npm run dev` i rekkefølge.
+
+> **Merk:** Første gang må du gjøre scriptet kjørbart:
+> ```bash
+> chmod +x start-dev.sh
+> ```
 
 ---
 
