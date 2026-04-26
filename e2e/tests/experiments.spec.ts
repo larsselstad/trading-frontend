@@ -78,3 +78,23 @@ test.describe('experiment detail', () => {
     await expect(page).toHaveURL('/experiments')
   })
 })
+
+test.describe('experiment detail — no SVR charts', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/experiments/no-charts-experiment-id')
+    await expect(
+      page.getByRole('heading', { name: 'no-charts-test' }),
+    ).toBeVisible()
+  })
+
+  test('shows stock chart instead of empty-state text', async ({ page }) => {
+    await expect(
+      page.getByText('No SVR charts yet. Add one above.'),
+    ).not.toBeVisible()
+    await expect(page.locator('.chart-container').first()).toBeVisible()
+  })
+
+  test('shows data point count for stock chart', async ({ page }) => {
+    await expect(page.locator('p.data-count').first()).toContainText('Showing')
+  })
+})

@@ -1,0 +1,15 @@
+{
+  "data": {
+    "buyDate": null,
+    "buyPrice": null,
+    "charts": [],
+    "createdAt": "2026-02-27T16:22:08.448858+00:00",
+    "endDate": "",
+    "id": "no-charts-experiment-id",
+    "name": "no-charts-test",
+    "startDate": "29.10.2025",
+    "stockId": "var",
+    "supportLines": []
+  },
+  "success": true
+}

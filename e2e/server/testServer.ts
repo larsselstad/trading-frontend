@@ -40,6 +40,8 @@ const server = createServer((req, res) => {
       /^\/experiments\/[^/]+\/charts\/[^/]+\/data$/.test(url.pathname)
     ) {
       fixtureName = 'experiment-chart-data'
+    } else if (url.pathname === '/experiments/no-charts-experiment-id') {
+      fixtureName = 'experiment-no-charts'
     } else if (/^\/experiments\/[^/]+$/.test(url.pathname)) {
       fixtureName = 'experiment-detail'
     } else if (url.pathname === '/data' || url.pathname === '/plot') {

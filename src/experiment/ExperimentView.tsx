@@ -302,7 +302,22 @@ const ExperimentView: FC = () => {
       )}
 
       {experiment.charts.length === 0 ? (
-        <p className="experiment-empty">No SVR charts yet. Add one above.</p>
+        <div className="chart-panel">
+          <StockChart
+            data={stockData}
+            supportLines={experiment.supportLines}
+            buyMarker={
+              experiment.buyDate && experiment.buyPrice != null
+                ? { date: experiment.buyDate, price: experiment.buyPrice }
+                : undefined
+            }
+            sellMarker={
+              experiment.sellDate && experiment.sellPrice != null
+                ? { date: experiment.sellDate, price: experiment.sellPrice }
+                : undefined
+            }
+          />
+        </div>
       ) : (
         experiment.charts.map((chart) => (
           <ExperimentChartWrapper
