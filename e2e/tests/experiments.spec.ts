@@ -59,6 +59,12 @@ test.describe('experiment detail', () => {
     )
   })
 
+  test('shows latest date in chart header', async ({ page }) => {
+    await expect(page.locator('.chart-label')).toContainText(
+      'Latest: 13.02.2026',
+    )
+  })
+
   test('shows data point count after chart data loads', async ({ page }) => {
     await expect(page.locator('p.data-count')).toContainText(
       'Showing 73 data points',

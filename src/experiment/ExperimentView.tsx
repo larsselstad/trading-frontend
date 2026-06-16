@@ -381,10 +381,16 @@ const ExperimentChartWrapper: FC<ExperimentChartWrapperProps> = ({
 
   const displayData = chartData ?? stockData
 
+  const latestDate =
+    displayData.length > 0 ? displayData[displayData.length - 1].date : null
+
   return (
     <div className="chart-panel">
       <div className="chart-panel-header">
-        <span className="chart-label">SVR from {chart.svrStartDate}</span>
+        <span className="chart-label">
+          {latestDate && `Latest: ${latestDate} | `}SVR from{' '}
+          {chart.svrStartDate}
+        </span>
         <button
           type="button"
           className="remove-button"
